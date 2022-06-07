@@ -1,0 +1,5 @@
+Most of the time, programs require information to be passed around. For example, think about a calculator that would calculate what the tip would be on a restaurant bill. The program would need to know the total amount of the bill, to know the percentage you want to tip and then it would need to use those two numbers to calculate an amount. AND it would have to give you, the user, a place to enter that information in, and a place to display the calculation back to you. Phew!  
+
+But how does the program "take" the bill amount to calculate it? 
+
+Every time a piece of information is entered or used in a program, the computer needs to carve out some of its memory to hold it. We - as developers - get to tell the computer when to carve out space for a piece of data, what to call that space for that piece of data, and what gets stored in that space. We call this process creating variables. 
