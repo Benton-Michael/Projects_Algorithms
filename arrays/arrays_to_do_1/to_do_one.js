@@ -1,11 +1,11 @@
 // ----------------------------Push Front -----------------------------
-// General Instrucitons: Use the JavaScript language for all challenges. 
-// Do not use built-in methods 
-// (unless otherwise instructed) 
+// General Instrucitons: Use the JavaScript language for all challenges.
+// Do not use built-in methods
+// (unless otherwise instructed)
 // or create any additional arrays. (.length is a property, and is allowed.)
 
 // Push Front:
-// Given an array and an additional value, insert this value at the beginning of the array. 
+// Given an array and an additional value, insert this value at the beginning of the array.
 // You may use .push(), but you can do this without it!
 // Examples:
 // pushFront([5,7,2,3], 8) => [8,5,7,2,3]
@@ -15,6 +15,7 @@
 // ****Solution****
 function pushFront(array, value) {
   for (let i = array.length; i >= 0; i--) {
+    // shift values right
     array[i] = array[i - 1];
   }
   // set array [0] to the value we are provided
@@ -28,8 +29,19 @@ function pushFront(array, value) {
 // OUTPUT IS: [8, 5, 7, 2, 3]
 // OUTPUT IS: [7, 99]
 
+// Solution using the push() method
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+// The push() method adds one or more elements to the end of an array and returns
+// the new length of the array.
+const array2 = [5, 7, 2, 3];
+console.log(array2.push(8));
+
+console.log(array2);
+// OUTPUT IS: 5
+// [5,7,2,3,8]
+
 // ----------------------------Pop Front------------------------
-// Given an array, remove and return the value at the beginning of the array. 
+// Given an array, remove and return the value at the beginning of the array.
 // Prove the value is removed from the array by printing it.
 // You may use .pop(), you are able do this without it though!
 // Examples:
@@ -39,60 +51,86 @@ function pushFront(array, value) {
 // Solution:
 
 function popFront(array) {
-
-    // save 1st value of the array so we can edit it
-    let firstValue = array[0];
-    // loop through the array shifting all values to the left
-    for(let i = 0; i < array.length; i++) {
-        // now shifting values left
-        array[i] = array[i + 1]
-    }
-    // decrease the length of the array by 1 (length property of array = 4)
-    array.length = array.length - 1;
-    // log the array 
-    console.log(array)
-    // return the removed value 
-    return firstValue;
+  // save 1st value of the array so we can edit it
+  let firstValue = array[0];
+  // loop through the array shifting all values to the left
+  for (let i = 0; i < array.length; i++) {
+    // now shifting values left
+    array[i] = array[i + 1];
+  }
+  // decrease the length of the array by 1 (length property of array = 4)
+  array.length = array.length - 1;
+  // log the array
+  console.log(array);
+  // return the removed value
+  return firstValue;
 }
 
-    // console.log(popFront([0, 5, 10, 15]));
-    // OUTPUT IS: [5, 10, 15]
-    // 0
-    // console.log(popFront([4,5,7,9]));
-    // OUTPUT IS: [5,7,9]
-    // 4
+// console.log(popFront([0, 5, 10, 15]));
+// OUTPUT IS: [5, 10, 15]
+// 0
+// console.log(popFront([4,5,7,9]));
+// OUTPUT IS: [5,7,9]
+// 4
 
+// Solution using the pop() method
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop
+// The pop() method removes the last element from the array
+const array1 = [4, 5, 7, 9];
+console.log(array1.pop());
+// output is 9
+console.log(array1);
+//  output is [4,5,7]
 
 // ----------------------------Insert At--------------
-// Given an array, index, and additional value, insert the value into array at given index. 
-// You can think of pushFront(arr,val) as equivalent to insertAt(arr,0,val). 
+// Given an array, index, and additional value, insert the value into array at given index.
+// You can think of pushFront(arr,val) as equivalent to insertAt(arr,0,val).
 // You may use .push(), you are able do this without it though!
 
 // Examples:
 // insertAt([100,200,5], 2, 311) => [100,200,311,5]
 // insertAt([9,33,7], 1, 42) => [9,42,33,7]
 
+function insertAt(arr, index, value) {
+  // using pushFront approach (shifting values to right to make space for insert)
+  // loop through the array shifting values to the right until you get to the given index.
+  for (let i = arr.length; i >= index; i--) arr[i] = arr[i - 1];
 
+  // set arr[index] equal to the given value
+  arr[index] = value;
+  // return the given array
+  return arr;
+}
+// console.log(insertAt([100,200,5], 2, 311));
+// OUTPUT: [100,200,311,5]
+// console.log(insertAt([9, 33, 7], 1, 42));
+// OUTPUT: [9,42,33,7]
 
+// Solution using the push() method
 
-// BONUS: Remove At
-// Given an array and an index into array, remove and return the array value at that index. Prove the value is removed from the array by printing it. Think of popFront(arr) as equivalent to removeAt(arr,0).
+// --------------------------BONUS: Remove At------------------------
+// Given an array and an index into array, remove and return the array value at that index.
+// Prove the value is removed from the array by printing it.
+// Think of popFront(arr) as equivalent to removeAt(arr,0).
 
 // Examples:
-
 // removeAt([1000,3,204,77], 1) => 3 returned, with [1000,204,77] printed in the function
 // removeAt([8,20,55,44,98], 3) => 44 returned, with [8,20,55,98] printed in the function
 
-// BONUS: Swap Pairs
-// Swap positions of successive pairs of values of given array. If length is odd, do not change the final element.
+// --------------------------BONUS: Swap Pairs-------------
+// Swap positions of successive pairs of values of given array.
+// If length is odd, do not change the final element.
 
 // Examples:
 
 // insertAt([1,2,3,4]) => [2,1,4,3]
 // insertAt(["Brendan",true,42]) => [true,"Brendan",42]
 
-// BONUS: Remove Duplicates
-// Given a sorted array, remove duplicate values. Because array elements are already in order, all duplicate values will be grouped together. If you already made the Remove At function, you are welcome to use that! If you solved this using nested loops, for an extra challenge, try to do it without any nested loops!
+// ----------------------------BONUS: Remove Duplicates-------------
+// Given a sorted array, remove duplicate values. Because array elements are already in order,
+// all duplicate values will be grouped together. If you already made the Remove At function,
+// you are welcome to use that! If you solved this using nested loops,
+// for an extra challenge, try to do it without any nested loops!
 
 // Examples:
 
