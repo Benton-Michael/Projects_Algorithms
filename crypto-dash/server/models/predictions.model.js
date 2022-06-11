@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const PredictionsSchema = new mongoose.Schema(
+const PredictionSchema = new mongoose.Schema(
   {
     coinName: {
       type: String,
@@ -42,6 +42,6 @@ const PredictionsSchema = new mongoose.Schema(
   }
 );
 
-const Predictions = mongoose.model("Predictions", PredictionsSchema);
+const Prediction = mongoose.model("Prediction", PredictionSchema);
 
-module.exports = Predictions;
+module.exports = Prediction;
