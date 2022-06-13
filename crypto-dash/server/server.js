@@ -1,6 +1,7 @@
 const express = require("express"); // These will remain in this order for correct functionality
 const cors = require("cors");
 
+
 const app = express(); // Express is the framework for the Node server
 const PORT = 5001; // Using this as my Port 8000
 
@@ -18,10 +19,11 @@ app.use(
   })
 );
 
+
 require("./config/mongoose.config");
 // Always place routes after the middleware
 // app.use(express.json()) must be above the (app) call
-// require("./routes/prediction.routes")(app);
+require("./routes/prediction.routes")(app);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

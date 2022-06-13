@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const PredictionSchema = new mongoose.Schema(
+const PredictionsSchema = new mongoose.Schema(
   {
     coinName: {
       type: String,
@@ -23,7 +23,7 @@ const PredictionSchema = new mongoose.Schema(
       ],
     },
     pricePrediction: {
-      type: String,
+      type: Number,
       required: [true, "The predicted price is required"],
     },
     predictionYear: {
@@ -31,7 +31,7 @@ const PredictionSchema = new mongoose.Schema(
       min: [2022, "Price predictions are for future years!"],
     },
 
-    predictionReasons: {
+    predictionReason: {
       type: String,
       required: [true, "Please enter the reason for you price prediction"],
       maxlength: [500, "Please limit your comment to 500 characters"],
@@ -42,6 +42,8 @@ const PredictionSchema = new mongoose.Schema(
   }
 );
 
-const Prediction = mongoose.model("Prediction", PredictionSchema);
+// const Predictions = mongoose.model("Prediction", PredictionsSchema);
 
-module.exports = Prediction;
+// module.exports = Predictions;
+
+module.exports = mongoose.model("Prediction", PredictionsSchema);
