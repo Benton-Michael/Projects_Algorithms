@@ -19,7 +19,7 @@ function App() {
       offset: "0",
     },
     headers: {
-      "X-RapidAPI-Key": "c5afc46010msh37b7a15d21e2de3p1ab132jsn28693b6e6c3b",
+      "X-RapidAPI-Key": "",
       "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
     },
   };
