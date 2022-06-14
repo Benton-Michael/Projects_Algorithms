@@ -23,15 +23,45 @@ const getAllPredictions = (req, res) => {
     });
 };
 
-// Update to be used for detail and update
 const getOnePrediction = (req, res) => {
-    Prediction.findOne({ _id: req.params.id })
+  Prediction.findOne({ _id: req.params.id })
     .then((queriedPrediction) => {
-        res.json({ queriedPrediction });
+      res.json({ queriedPrediction });
     })
     .catch((err) => {
-        res.status(400).json({ err });
+      res.status(400).json({ err });
     });
 };
 
-module.exports = { createNewPrediction, getAllPredictions, getOnePrediction };
+// Update
+const updatePrediction = (req, res) => {
+  Prediction.findOneAndUpdate({ _id: req.params.id }, req.body, {
+    new: true,
+    runValidators: true,
+  })
+    .then((updatedPrediction) => {
+      res.json({ updatedPrediction });
+    })
+    .catch((err) => {
+      res.status(400).json({ err });
+    });
+};
+
+// Delete
+const deletePrediction = (req, res) => {
+  Prediction.deleteOne({ _id: req.params.id })
+    .then((deletedResponse) => {
+      res.json({ deletedResponse });
+    })
+    .catch((err) => {
+      res.status(400).json({ err });
+    });
+};
+
+module.exports = {
+  createNewPrediction,
+  getAllPredictions,
+  getOnePrediction,
+  updatePrediction,
+  deletePrediction,
+};
