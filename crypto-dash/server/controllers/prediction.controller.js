@@ -13,10 +13,13 @@ const createNewPrediction = (req, res) => {
 };
 
 // Read
+
+// removed inner key {} from alllPredictions
+// the array can be returned with just response.data
 const getAllPredictions = (req, res) => {
   Prediction.find()
     .then((allPredictions) => {
-      res.json({ allPredictions });
+      res.json( allPredictions );
     })
     .catch((err) => {
       res.status(400).json({ err });
