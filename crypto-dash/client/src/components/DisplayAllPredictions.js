@@ -27,23 +27,29 @@ const DisplayAllPredictions = () => {
           <br></br>
           <Link to="/coinData">View Your Dashboard</Link>
           <p className="atop-text">placeholder for above the table</p>
-          <table class="table table-sm">
-            <thead class="thead-dark">
+          <table className="table table-sm table-hover table-bordered table-dark">
+            <thead className="thead-dark">
               <tr>
                 {/* <th scope="col">#</th>
           <th scope="">dddd</th> */}
                 <th scope="col">Cryptocurrency Name</th>
+                <th scope="col">Prediciton Date</th>
                 <th scope="col">Predictions</th>
               </tr>
             </thead>
             <tbody>
               {allPredictions.map((prediction, index) => {
                 return (
-                  <tr>
+                  <tr key={prediction._id}>
                     <td>{prediction.coinName}</td>
+                    <td></td>
                     <td>
                       <button>View</button>
-                      <button>Edit</button>
+
+                      <Link to={`/edit/${prediction._id}`}>
+                        <button>Edit</button>
+                      </Link>
+
                       <button>Delete</button>
                     </td>
                   </tr>

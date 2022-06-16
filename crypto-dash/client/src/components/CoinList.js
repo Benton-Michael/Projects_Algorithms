@@ -48,6 +48,7 @@ const CoinList = () => {
               <th>View Predictions</th>
             </tr>
           </thead>
+          
           <>
             <div className="table">
               {coins.map((coin, idx) => (

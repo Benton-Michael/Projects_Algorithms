@@ -6,6 +6,7 @@ import axios from "axios";
 import DisplayAllPredictions from "./components/DisplayAllPredictions";
 import PredictionForm from "./components/PredictionForm";
 import CoinList from "./components/CoinList";
+import EditPrediction from "./components/EditPrediction";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
           <Route path="/" element={<DisplayAllPredictions />} />
           <Route path="/coinData" element={<CoinList />} />
           <Route path="/new" element={<PredictionForm />} />
-          <Route />
+          {/* we get to edit through the displayAll page */}
+          <Route path="/edit/:id" element={<EditPrediction /> } />
         </Routes>
       </BrowserRouter>
     </div>

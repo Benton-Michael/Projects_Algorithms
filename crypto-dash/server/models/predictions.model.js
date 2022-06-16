@@ -4,7 +4,7 @@ const PredictionsSchema = new mongoose.Schema(
   {
     coinName: {
       type: String,
-      required: [true, "Please select a coin"],
+      required: [true, "Please select a cryptocurrency from the list"],
       // menu options for the user
       enum: [
         "Bitcoin",
@@ -24,17 +24,22 @@ const PredictionsSchema = new mongoose.Schema(
     },
     pricePrediction: {
       type: Number,
-      required: [true, "The predicted price is required"],
+      required: [
+        true,
+        "The predicted price is required in order to make a New Prediction.",
+      ],
     },
     predictionYear: {
       type: Number,
+      required: [true, "The prediction year is also required!"],
       min: [2022, "Price predictions are for future years!"],
     },
 
     predictionReason: {
       type: String,
-      required: [true, "Please enter the reason for you price prediction"],
-      maxlength: [500, "Please limit your comment to 500 characters"],
+      required: [true, "Please enter the reason for your price prediction!"],
+      minlength: [5, "Please enter the reason for your price prediction!"],
+      maxlength: [500, "Please limit your comment to 500 characters!"],
     },
   },
   {

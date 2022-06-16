@@ -1,51 +1,120 @@
-import { Link } from "react-router-dom";
+import "../App.css";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const PredictionForm = () => {
+  // Should I try to write this as a funcitonal component? Why vs. why not
+  // function newPrediction() {
+  // const PredictionForm = (props) => {
+
+  const [coinName, setCoinName] = useState("");
+  const [pricePrediction, setPricePrediction] = useState(0);
+  const [predictionYear, setPredictionYear] = useState(2022);
+  const [predictionReason, setPredictionReason] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const navigate = useNavigate();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:5001/api/prediction/", {
+        coinName,
+        pricePrediction,
+        predictionYear,
+        predictionReason,
+      })
+      .then((response) => {
+        console.log(response);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log("Error response data", err.response.data.err.errors);
+        setErrors(err.response.data.err.errors);
+      });
+  };
+
   return (
     <div className="container">
       <Link to="/">Home</Link>
-      <form>
+      <h2>Make a new Prediction</h2>
+      <form onSubmit={submitHandler}>
         <div className="form-group col-6">
-          <label htmlFor="select-coinName">Select Cryptocurrency</label>
-          <select class="form-control" id="select-coinName">
-            <option>Bitcoin</option>
-            <option>Ethereum</option>
-            <option>Cardano</option>
-            <option>Ripple</option>
-            <option>Solana</option>
-            <option>Polkadot</option>
-            <option>Polygon</option>
-            <option>Chainlink </option>
-            <option>Monero </option>
-            <option>Decentraland </option>
-            <option>Filecoin</option>
-            <option>Axie Infinity shards</option>
-            <option>Basic Attention Token</option>
+          <label htmlFor="coinName">Select a Cryptocurrency</label>
+          <select
+            className="form-control"
+            onChange={(e) => setCoinName(e.target.value)}
+          >
+            <option value="">Select a Crypto</option>
+            <option value="Bitcoin">Bitcoin</option>
+            <option value="Ethereum">Ethereum</option>
+            <option value="Cardano">Cardano</option>
+            <option value="Ripple">Ripple</option>
+            <option value="Solana">Solana</option>
+            <option value="Polkadot">Polkadot</option>
+            <option value="Polygon">Polygon</option>
+            <option value="Chainlink">Chainlink </option>
+            <option value="Monero">Monero </option>
+            <option value="Decentraland">Decentraland </option>
+            <option value="Filecoin">Filecoin</option>
+            <option value="Axie Infinity shards">Axie Infinity shards</option>
+            <option value="Basic Attention Token">Basic Attention Token</option>
           </select>
-          <label htmlFor="pricePrediction">Price Prediction:</label>
+          {errors.coinName && (
+            <p className="text-danger">{errors.coinName.message}</p>
+          )}
+          <br />
+          <label>Price Prediction:</label>
           <input
             type="text"
+            value={pricePrediction}
             className="form-group col-6"
             placeholder="Future price in $USD"
+            onChange={(e) => setPricePrediction(e.target.value)}
           />
+          {errors.pricePrediction && (
+            <p className="text-danger">{errors.pricePrediction.message}</p>
+          )}
+          <br />
 
-          <label htmlFor="predictionYear" className="form-group col-6">
-            Prediction Year
-          </label>
+          <label>Prediction Year: </label>
           <input
             type="text"
+            value={predictionYear}
             className="form-group col-6"
             placeholder="Prediction Year"
+            onChange={(e) => setPredictionYear(e.target.value)}
           />
+          {errors.predictionYear && (
+            <p className="text-danger">{errors.predictionYear.message}</p>
+            // Error message can also be written using the ternary operator
 
-          <label htmlFor="predictionReason" className="form-group col-6">
-            Rationale
-          </label>
+          )}
+          <br />
+
+          <label>Prediciton Reasons:</label>
           <input
             type="textarea"
+            value={predictionReason}
             className="form-group col-6"
-            placeholder="Prediction Reasons"
+            placeholder="Reasons"
+            onChange={(e) => setPredictionReason(e.target.value)}
           />
+          {errors.predictionReason && (
+            <p className="text-danger">{errors.predictionReason.message}</p>
+          )}
+          <br />
+
+          <button
+            className="btn btn-primary"
+            type="submit"
+            value="Add Prediction"
+          >
+            {" "}
+            Add Prediction{" "}
+          </button>
         </div>
       </form>
     </div>
