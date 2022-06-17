@@ -8,11 +8,13 @@ import PredictionForm from "./components/PredictionForm";
 import CoinList from "./components/CoinList";
 import EditPrediction from "./components/EditPrediction";
 import DisplayPredsAndData from "./views/DisplayPredsAndData";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<DisplayPredsAndData />} />
           <Route path="/coinData" element={<CoinList />} />

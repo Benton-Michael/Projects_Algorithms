@@ -132,6 +132,10 @@ const EditPrediction = (props) => {
         value="Update Prediction"
       >
         Update Prediction
+        {/* @ 1:11:41 --- Begin HERE: After running - confirm form info is in the state variable */}
+        {/* TO DO: submit handler */}
+        {/* TO DO: Delete Funtionality here? */}
+        {/* Note: this is update component from movies app */}
       </button>
     </form>
   );
