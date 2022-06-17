@@ -7,17 +7,18 @@ import DisplayAllPredictions from "./components/DisplayAllPredictions";
 import PredictionForm from "./components/PredictionForm";
 import CoinList from "./components/CoinList";
 import EditPrediction from "./components/EditPrediction";
+import DisplayPredsAndData from "./views/DisplayPredsAndData";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DisplayAllPredictions />} />
+          <Route path="/" element={<DisplayPredsAndData />} />
           <Route path="/coinData" element={<CoinList />} />
           <Route path="/new" element={<PredictionForm />} />
           {/* we get to edit through the displayAll page */}
-          <Route path="/edit/:id" element={<EditPrediction /> } />
+          <Route path="/edit/:id" element={<EditPrediction />} />
         </Routes>
       </BrowserRouter>
     </div>

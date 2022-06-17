@@ -22,12 +22,12 @@ const DisplayAllPredictions = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-6">
+        <div className="col-12">
           <Link to="/new">Add a Prediction</Link>
           <br></br>
-          <Link to="/coinData">View Your Dashboard</Link>
-          <p className="atop-text">placeholder for above the table</p>
-          <table className="table table-sm table-hover table-bordered table-dark">
+          <Link to="/coinData">View Current Coin Data</Link>
+          <h1 className="atop-text">Cryptocurrency Dashboard</h1>
+          <table className="table-striped table table-md table-hover table-bordered table-dark">
             <thead className="thead-dark">
               <tr>
                 {/* <th scope="col">#</th>
@@ -44,13 +44,13 @@ const DisplayAllPredictions = () => {
                     <td>{prediction.coinName}</td>
                     <td></td>
                     <td>
-                      <button>View</button>
+                      <button className="btn btn-info">View</button>
 
                       <Link to={`/edit/${prediction._id}`}>
-                        <button>Edit</button>
+                        <button className="btn btn-secondary m-2">Edit</button>
                       </Link>
 
-                      <button>Delete</button>
+                      <button className="btn btn-warning">Delete</button>
                     </td>
                   </tr>
                 );

@@ -45,6 +45,7 @@ const PredictionForm = () => {
           <label htmlFor="coinName">Select a Cryptocurrency</label>
           <select
             className="form-control"
+            id="theCoin"
             onChange={(e) => setCoinName(e.target.value)}
           >
             <option value="">Select a Crypto</option>
@@ -66,9 +67,10 @@ const PredictionForm = () => {
             <p className="text-danger">{errors.coinName.message}</p>
           )}
           <br />
-          <label>Price Prediction:</label>
+          <label htmlFor="pricePrediction">Price Prediction:</label>
           <input
             type="text"
+            id="thePrice"
             value={pricePrediction}
             className="form-group col-6"
             placeholder="Future price in $USD"
@@ -79,9 +81,10 @@ const PredictionForm = () => {
           )}
           <br />
 
-          <label>Prediction Year: </label>
+          <label htmlFor="predictionYear">Prediction Year: </label>
           <input
             type="text"
+            id="theYear"
             value={predictionYear}
             className="form-group col-6"
             placeholder="Prediction Year"
@@ -94,9 +97,10 @@ const PredictionForm = () => {
           )}
           <br />
 
-          <label>Prediciton Reasons:</label>
+          <label htmlFor="predictionReason">Prediction Reasons:</label>
           <input
             type="textarea"
+            id="theReason"
             value={predictionReason}
             className="form-group col-6"
             placeholder="Reasons"

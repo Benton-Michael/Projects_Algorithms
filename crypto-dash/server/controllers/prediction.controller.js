@@ -29,7 +29,7 @@ const getAllPredictions = (req, res) => {
 const getOnePrediction = (req, res) => {
   Prediction.findOne({ _id: req.params.id })
     .then((queriedPrediction) => {
-      res.json({ queriedPrediction });
+      res.json( queriedPrediction );
     })
     .catch((err) => {
       res.status(400).json({ err });

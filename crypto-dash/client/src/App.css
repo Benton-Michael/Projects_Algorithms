@@ -4,6 +4,7 @@
 }
 .App {
   text-align: center;
+  /* display: flex; */
 }
 
 .App-logo {
@@ -40,6 +41,13 @@
     transform: rotate(360deg);
   }
 }
-.atop-text {
-  color: green;
+h1 .atop-text {
+  color: rgb(4, 30, 66);
+  text-shadow: rgb(252, 76, 0);
 }
+
+/* .container {
+ 
+    display: flex;
+    flex-flow: row wrap;
+  } */
