@@ -19,6 +19,24 @@ const DisplayAllPredictions = () => {
       });
   }, []); // the empty array for useEffect b/c we only want it to run once
 
+  const handleDeletePred = (idFromBelow) => {
+
+    axios.delete(`http://localhost:5001/api/prediction/${idFromBelow}`)
+    .then((response) => {
+      console.log('success deleting prediction')
+      console.log(response);
+      const filteredPredictions = allPredictions.filter(prediction =>{
+        return prediction._id !== idFromBelow;
+      });
+      setAllPredictions(filteredPredictions);
+    })
+
+    .catch((err) => {
+      console.log("error deleting prediction", err.response);
+    });
+  };
+
+
   return (
     <div className="container">
       <div className="row">
@@ -33,8 +51,8 @@ const DisplayAllPredictions = () => {
                 {/* <th scope="col">#</th>
           <th scope="">dddd</th> */}
                 <th scope="col">Cryptocurrency Name</th>
-                <th scope="col">Prediciton Date</th>
-                <th scope="col">Predictions</th>
+                <th scope="col">Prediction Year</th>
+                <th scope="col">Prediction Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -42,15 +60,17 @@ const DisplayAllPredictions = () => {
                 return (
                   <tr key={prediction._id}>
                     <td>{prediction.coinName}</td>
-                    <td></td>
+                    <td>{prediction.predictionYear}</td>
                     <td>
+                      <Link to={`/prediction/${prediction._id}`}>
                       <button className="btn btn-info">View</button>
+                      </Link>
 
                       <Link to={`/edit/${prediction._id}`}>
                         <button className="btn btn-secondary m-2">Edit</button>
                       </Link>
 
-                      <button className="btn btn-warning">Delete</button>
+                      <button onClick ={() => handleDeletePred(prediction._id)} className="btn btn-warning">Delete</button>
                     </td>
                   </tr>
                 );

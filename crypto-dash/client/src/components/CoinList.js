@@ -41,24 +41,8 @@ const CoinList = () => {
       {/* <h1>Cryptocurrency Dashboard</h1> */}
       <h2>Coin info:</h2>
       <div className="container d-flex flex-wrap justify-content-between">
-      {coins.map((coin, idx) => (
+      {coins.map((coin, idx) => 
 
-
-
-/* <div className="row row-cols-1 row-cols-md-2">
-  <div className="col mb-4">
-    <div className="card" key={idx}>
-      <img src={coin.iconUrl} className="card-img-top" alt="..." />
-      <div className="card-body">
-        <h5 className="card-title">{coin.name}</h5>
-        <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  
-</div> */
-
-      
           <div className="card mb-2" style={{width: '18rem'}} key={idx}>
             <img src={coin.iconUrl} className="card-img-top" alt="..." />
             <div className="card-body">
@@ -71,37 +55,9 @@ const CoinList = () => {
             </div>
           </div>
         
-      ))}
+      )}
 </div>
-      {/* <table>
-          <thead>
-            <tr>
-              <th>Name:</th>
-              <th>Price:</th>
-              <th>MarketCap:</th>
-              <th>View Predictions</th>
-            </tr>
-          </thead>
-          
-          <>
-            <div className="table">
-              {coins.map((coin, idx) => (
-                <ul key={idx}>
-                  <li>{coin.name}</li>
-                  <li>{coin.price}</li>
-                  <li>{coin.symbol}</li>
-                </ul>
-              ))}
-            </div>
-          </>
-          <></>
-        </table> */}
-
-      {/* <> */}
-      <div className="predictions">
-        <h1>Predictions HERE</h1>
-      </div>
-      {/* </> */}
+      
     </div>
   )
 };

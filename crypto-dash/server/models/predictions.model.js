@@ -38,7 +38,7 @@ const PredictionsSchema = new mongoose.Schema(
     predictionReason: {
       type: String,
       required: [true, "Please enter the reason for your price prediction!"],
-      minlength: [5, "Please enter the reason for your price prediction!"],
+      minlength: [2, "Please enter the reason for your price prediction!"],
       maxlength: [500, "Please limit your comment to 500 characters!"],
     },
   },
