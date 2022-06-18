@@ -17,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-
+            
           <Route path="/" element={<DisplayPredsAndData />} />
           <Route path="/coinData" element={<CoinList />} />
           <Route path="/new" element={<PredictionForm />} />

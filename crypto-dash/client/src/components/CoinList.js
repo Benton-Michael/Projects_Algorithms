@@ -12,6 +12,8 @@ const defaultOptions = {
   symbol: "$",
 };
 
+// added currency formatter here - not yet implemented
+
 const currencyFormatter = (value, options) => {
   if (typeof value !== "number") value = 0.0;
   options = { ...defaultOptions, ...options };
