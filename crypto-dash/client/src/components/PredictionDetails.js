@@ -29,6 +29,10 @@ const PredictionDetails = (props) => {
         setErrors(err.response.data.err.errors);
       });
   }, []);
+
+  // references for below numbers
+  // https://stackoverflow.com/questions/55556221/how-do-you-format-a-number-to-currency-when-using-react-native-expo
+
   return (
     <div className="card mb-3">
       <Link to="/"> Back to Home </Link>

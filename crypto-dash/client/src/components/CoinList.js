@@ -3,6 +3,27 @@ import axios from "axios";
 import "../App.css";
 import { Link } from "react-router-dom";
 
+// https://nidhinkumar.medium.com/react-js-number-format-and-styling-a1a6e211e629
+
+const defaultOptions = {
+  significantDigits: 2,
+  thousandsSeparator: ",",
+  decimalSeparator: ".",
+  symbol: "$",
+};
+
+const currencyFormatter = (value, options) => {
+  if (typeof value !== "number") value = 0.0;
+  options = { ...defaultOptions, ...options };
+  value = value.toFixed(options.significantDigits);
+
+  const [currency, decimal] = value.split(".");
+  return `${options.symbol} ${currency.replace(
+    /\B(?=(\d{3})+(?!\d))/g,
+    options.thousandsSeparator
+  )}${options.decimalSeparator}${decimal}`;
+};
+
 const CoinList = () => {
   const options = {
     method: "GET",
@@ -39,27 +60,26 @@ const CoinList = () => {
   return (
     <div className="container">
       {/* <h1>Cryptocurrency Dashboard</h1> */}
-      <h2>Coin info:</h2>
+      <h2>Token Data:</h2>
       <div className="container d-flex flex-wrap justify-content-between">
-      {coins.map((coin, idx) => 
-
-          <div className="card mb-2" style={{width: '18rem'}} key={idx}>
+        {coins.map((coin, idx) => (
+          <div className="card mb-2" style={{ width: "18rem" }} key={idx}>
             <img src={coin.iconUrl} className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title">{coin.name}</h5>
+
               <p className="card-text">${coin.price}</p>
+
               <p className="card-text">24hr Change {coin.change} %</p>
               <a href="#" className="btn btn-primary">
                 {coin.symbol}
               </a>
             </div>
           </div>
-        
-      )}
-</div>
-      
+        ))}
+      </div>
     </div>
-  )
+  );
 };
 
 export default CoinList;

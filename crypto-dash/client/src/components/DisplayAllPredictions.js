@@ -20,22 +20,21 @@ const DisplayAllPredictions = () => {
   }, []); // the empty array for useEffect b/c we only want it to run once
 
   const handleDeletePred = (idFromBelow) => {
+    axios
+      .delete(`http://localhost:5001/api/prediction/${idFromBelow}`)
+      .then((response) => {
+        console.log("success deleting prediction");
+        console.log(response);
+        const filteredPredictions = allPredictions.filter((prediction) => {
+          return prediction._id !== idFromBelow;
+        });
+        setAllPredictions(filteredPredictions);
+      })
 
-    axios.delete(`http://localhost:5001/api/prediction/${idFromBelow}`)
-    .then((response) => {
-      console.log('success deleting prediction')
-      console.log(response);
-      const filteredPredictions = allPredictions.filter(prediction =>{
-        return prediction._id !== idFromBelow;
+      .catch((err) => {
+        console.log("error deleting prediction", err.response);
       });
-      setAllPredictions(filteredPredictions);
-    })
-
-    .catch((err) => {
-      console.log("error deleting prediction", err.response);
-    });
   };
-
 
   return (
     <div className="container">
@@ -44,7 +43,7 @@ const DisplayAllPredictions = () => {
           <Link to="/new">Add a Prediction</Link>
           <br></br>
           <Link to="/coinData">View Current Coin Data</Link>
-          <h1 className="atop-text">Cryptocurrency Dashboard</h1>
+          <h1 className="atop-text">Your Predictions</h1>
           <table className="table-striped table table-md table-hover table-bordered table-dark">
             <thead className="thead-dark">
               <tr>
@@ -63,14 +62,19 @@ const DisplayAllPredictions = () => {
                     <td>{prediction.predictionYear}</td>
                     <td>
                       <Link to={`/prediction/${prediction._id}`}>
-                      <button className="btn btn-info">View</button>
+                        <button className="btn btn-info">View</button>
                       </Link>
 
                       <Link to={`/edit/${prediction._id}`}>
                         <button className="btn btn-secondary m-2">Edit</button>
                       </Link>
 
-                      <button onClick ={() => handleDeletePred(prediction._id)} className="btn btn-warning">Delete</button>
+                      <button
+                        onClick={() => handleDeletePred(prediction._id)}
+                        className="btn btn-warning"
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );

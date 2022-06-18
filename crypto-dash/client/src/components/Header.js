@@ -6,12 +6,12 @@ function Header() {
   return (
     // html5 header is like a div here
     <header>
-      <h1>Crypto Dash App</h1>
-      <Link to="/">Home</Link>
+      <h1>Cryptocurrency Dashboard</h1>
+      <NavLink to="/">Home</NavLink>
       <span> | </span>
-      <NavLink className="nav-link" to="/new">
-        Add a new Prediction
-      </NavLink>
+      <NavLink to="/new">Add Prediction</NavLink>
+      <span> | </span>
+      <NavLink to="/coinData">View Coin Data</NavLink>
     </header>
   );
 }
