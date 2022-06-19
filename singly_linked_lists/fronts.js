@@ -55,6 +55,23 @@ class SLL {
     removedNode.next = null; // the removed node will be caught by garbage collection
     return this.head;
   }
+
+  front() {
+    // return the value at the front (head) of the list
+    // account for the edge case where the list is empty / return null (rather than TypeError)
+    // if (this.head == null) {
+    //   return null;
+    // } else {
+    //   // the list is not empty
+    //   return this.head.value;
+
+    // written with a ternary statement
+    // }
+    // Ternary operator: condition ? value_if_true : value_if_false
+    return this.head == null ? null : this.head.value;
+    // shortening the ternary statement
+    // return this.head ? this.head.value : null; // truthy value, null is a falsey value
+  }
 }
 // testing output
 
@@ -62,7 +79,7 @@ var mySLL = new SLL(); // starting with empty list
 mySLL.addFront(10);
 mySLL.addFront(5);
 mySLL.addFront(3);
-console.log(mySLL);
+console.log(mySLL.front());
 mySLL.removeFront();
 
 // mySLL.addFront(10);
@@ -142,3 +159,33 @@ remove the head
 
 // --------------------------------
 
+// Question 3
+/*
+
+Write a method to return the value (not the node) at the head of the list. 
+If the list is empty, return null.
+
+Examples:
+
+SLL1.front() => 18
+SLL1.removeFront() => null
+SLL1.front() => null
+
+Solution:
+OUTPUT 1: 3
+
+OUTPUT 2: 
+3
+SLL {
+  head: SLLNode { value: 5, next: SLLNode { value: 10, next: null } }
+}
+
+
+OUTPUT 3: Using ternary operator
+
+3
+SLL {
+  head: SLLNode { value: 5, next: SLLNode { value: 10, next: null } }
+}
+
+*/
