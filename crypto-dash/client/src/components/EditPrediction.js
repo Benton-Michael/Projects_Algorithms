@@ -47,7 +47,7 @@ const EditPrediction = (props) => {
         predictionReason: reason,
       })
       .then((response) => {
-        console.log('successful update');
+        console.log("successful update");
         console.log(response);
         navigate("/");
       })
@@ -59,104 +59,86 @@ const EditPrediction = (props) => {
   };
 
   return (
-  
-      <form onSubmit={updatePredHandler}>
-        <Link to="/"> Back to Home </Link>
-        <div className="form-group col-6">
-          <label htmlFor="coinName">Select a Cryptocurrency</label>
-
-          <select
-            className="update"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          >
-            <option value="">Select a Crypto</option>
-            <option value="Bitcoin">Bitcoin</option>
-            <option value="Ethereum">Ethereum</option>
-            <option value="Cardano">Cardano</option>
-            <option value="Ripple">Ripple</option>
-            <option value="Solana">Solana</option>
-            <option value="Polkadot">Polkadot</option>
-            <option value="Polygon">Polygon</option>
-            <option value="Chainlink">Chainlink </option>
-            <option value="Monero">Monero </option>
-            <option value="Decentraland">Decentraland </option>
-            <option value="Filecoin">Filecoin</option>
-            <option value="Axie Infinity shards">Axie Infinity shards</option>
-            <option value="Basic Attention Token">Basic Attention Token</option>
-          </select>
-
-          {errors.coinName ? ( 
+    <form onSubmit={updatePredHandler}>
+      <Link to="/"> Back to Home </Link>
+      <div className="form-group col-6 align-items flex-direction:column">
+        <label htmlFor="coinName">Select a Cryptocurrency</label>
+        <select
+          className="update"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        >
+          <option value="">Select a Crypto</option>
+          <option value="Bitcoin">Bitcoin</option>
+          <option value="Ethereum">Ethereum</option>
+          <option value="Cardano">Cardano</option>
+          <option value="Ripple">Ripple</option>
+          <option value="Solana">Solana</option>
+          <option value="Polkadot">Polkadot</option>
+          <option value="Polygon">Polygon</option>
+          <option value="Chainlink">Chainlink </option>
+          <option value="Monero">Monero </option>
+          <option value="Decentraland">Decentraland </option>
+          <option value="Filecoin">Filecoin</option>
+          <option value="Axie Infinity shards">Axie Infinity shards</option>
+          <option value="Basic Attention Token">Basic Attention Token</option>
+        </select>
+        {errors.coinName ? (
           <p className="text-danger">{errors.coinName.message}</p>
-          ):null}
-
-          {/* {errors.coinName && <p className="text-danger">{errors.coin.message}</p>} */}
-
-          {/* {errors.coinName ? (
+        ) : null}
+        {/* {errors.coinName && <p className="text-danger">{errors.coin.message}</p>} */}
+        {/* {errors.coinName ? (
             <p className="text-danger"> {errors.coinName.message} </p>
           ) : null} */}
-          <br />
-
-          <label htmlFor="pricePrediction">Price Prediction:</label>
-          <input
-            type="text"
-            id="price"
-            value={price}
-            className="update"
-            onChange={(e) => setPrice(e.target.value)}
-          />
-          
-          {errors.pricePrediction}
-
-          {/* {errors.price && (
+        <br />
+        <label htmlFor="pricePrediction">Price Prediction:</label>
+        <input
+          type="text"
+          id="price"
+          value={price}
+          className="update"
+          onChange={(e) => setPrice(e.target.value)}
+        />
+        {errors.pricePrediction}
+        {/* {errors.price && (
             <p className="text-danger">{errors.price.message}</p>
           )} */}
-
-          <br />
-
-          <label htmlFor="predictionYear">Prediction Year: </label>
-          <input
-            type="text"
-            id="year"
-            value={year}
-            className="update"
-            placeholder="Prediction Year"
-            onChange={(e) => setYear(e.target.value)}
-          />
-
-          {errors.year && <p className="text-danger">{errors.year.message}</p>}
-
-          <br />
-
-          <label htmlFor="predictionReason">Prediction Reasons:</label>
-          <input
-            type="textarea"
-            id="reason"
-            value={reason}
-            className="update"
-            placeholder="Reasons"
-            onChange={(e) => setReason(e.target.value)}
-          />
-
-          {errors.reason && (
-            <p className="text-danger">{errors.predictionReason.message}</p>
-          )}
-
-          <br />
-          {/* @ 1:11:41 --- Begin HERE: After running - confirm form info is in the state variable */}
-          {/* TO DO: submit handler */}
-          {/* TO DO: Delete Funtionality here? */}
-          {/* Note: this is update component from movies app */}
-          {/* </div> */}
-          <button
-            type="submit"
-            className="btn btn-primary"
-            placeholder="Update Prediction"
-      />
-        </div>
-      </form>
-    
+        <br />
+        <label htmlFor="predictionYear">Prediction Year: </label>
+        <input
+          type="text"
+          id="year"
+          value={year}
+          className="update"
+          placeholder="Prediction Year"
+          onChange={(e) => setYear(e.target.value)}
+        />
+        {errors.year && <p className="text-danger">{errors.year.message}</p>}
+        <br />
+        <label htmlFor="predictionReason">Prediction Reasons:</label>
+        <input
+          type="textarea"
+          id="reason"
+          value={reason}
+          className="update"
+          placeholder="Reasons"
+          onChange={(e) => setReason(e.target.value)}
+        />
+        {errors.reason && (
+          <p className="text-danger">{errors.predictionReason.message}</p>
+        )}
+        <br />
+        <button
+          type="submit"
+          className="btn btn-primary"
+          placeholder="Update Prediction"
+        >
+          {" "}
+          Update Prediction{" "}
+        </button>
+      </div>
+    </form>
   );
 };
 

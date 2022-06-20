@@ -5,6 +5,7 @@
 .App {
   text-align: center;
   /* display: flex; */
+  background-color: whitesmoke;
 }
 
 .App-logo {

@@ -1,15 +1,17 @@
 header {
-    background-color: rgb(115, 112, 112);
-    color: #eee;
-    padding: 20px;
-  }
-  /* the white used above and below is not solid white. It is better for screen readers */
-  .nav-link {
-    color: #eee;
-    text-decoration: none;
-  }
-  
-  .active {
-    color: rgb(252, 76, 0);
-    font-weight: bolder;
-  }
+  background-color: rgb(115, 112, 112);
+  color: #eee;
+  padding: 20px;
+}
+/* the white used above and below is not solid white. 
+It is better for screen readers */
+
+.nav-link {
+  color: blue;
+  text-decoration: none;
+}
+
+.active {
+  color: rgb(252, 76, 0);
+  font-weight: bolder;
+}

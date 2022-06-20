@@ -39,9 +39,9 @@ const PredictionForm = () => {
   return (
     <div className="container">
       <Link to="/">Home</Link>
-      <h2>Make a new Prediction</h2>
+      <h2>Create a new Prediction</h2>
       <form onSubmit={submitHandler}>
-        <div className="form-group col-6">
+        <div className="form-group col-6 align-items flex-direction: column">
           <label htmlFor="coinName">Select a Cryptocurrency</label>
           <select
             className="form-control"
@@ -93,7 +93,6 @@ const PredictionForm = () => {
           {errors.predictionYear && (
             <p className="text-danger">{errors.predictionYear.message}</p>
             // Error message can also be written using the ternary operator
-
           )}
           <br />
 
