@@ -8,6 +8,8 @@ import * as mdb from "mdb-ui-kit"; // lib
 import { Input } from 'mdb-ui-kit'; // module
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+
 root.render(
   <React.StrictMode>
     <App />
