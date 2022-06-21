@@ -111,7 +111,7 @@ const PredictionForm = () => {
           <br />
 
           <button
-            className="btn btn-primary"
+            className="submit btn btn-primary"
             type="submit"
             value="Add Prediction"
           >
