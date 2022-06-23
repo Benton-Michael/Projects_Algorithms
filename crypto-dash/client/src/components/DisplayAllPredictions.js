@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+// import { Paper } from '@material-ui/core';
+// import { DataGrid } from '@mui/x-data-grid';
+
 import "../App.css";
 
 const DisplayAllPredictions = () => {
@@ -62,19 +65,18 @@ const DisplayAllPredictions = () => {
                     <td>{prediction.predictionYear}</td>
                     <td>
                       <Link to={`/prediction/${prediction._id}`}>
-                        <button className="btn btn-info">View</button>
+                        <button className="btn btn-info m-2">View</button>
                       </Link>
-
                       <Link to={`/edit/${prediction._id}`}>
-                        <button className="btn btn-secondary m-2">Edit</button>
+                        <button className="btn btn-info m-2">Edit</button>
                       </Link>
-
-                      <button
-                        onClick={() => handleDeletePred(prediction._id)}
-                        className="btn btn-warning"
+                      <Link to ="">
+                      <button onClick={() => handleDeletePred(prediction._id)}
+                        className="btn btn-warning m-2"
                       >
                         Delete
                       </button>
+                      </Link>
                     </td>
                   </tr>
                 );
